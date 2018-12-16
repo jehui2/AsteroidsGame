@@ -1,4 +1,5 @@
 Spaceship s = new Spaceship();
+Asteroid[] Meteor = new Asteroid[10];
 //your variable declarations here
 public void setup() 
 {
@@ -8,6 +9,10 @@ public void setup()
   {
     Background[i] = new Star();
   }
+  for(int i = 0; i < Meteor.length; i++)
+  {
+    Meteor[i] = new Asteroid();
+  }
 }
 public void draw() 
 {
@@ -15,6 +20,11 @@ public void draw()
   for(int i = 0; i < Background.length; i++)
   {
     Background[i].show();
+  }
+  for(int i = 0; i < Meteor.length; i++)
+  {
+    Meteor[i].show();
+    Meteor[i].move();
   }
   s.show();
   s.move();

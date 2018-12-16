@@ -1,5 +1,5 @@
 Spaceship s = new Spaceship();
-Asteroid[] Meteor = new Asteroid[10];
+ArrayList <Asteroid> Meteor = new ArrayList <Asteroid>();
 //your variable declarations here
 public void setup() 
 {
@@ -9,9 +9,9 @@ public void setup()
   {
     Background[i] = new Star();
   }
-  for(int i = 0; i < Meteor.length; i++)
+  for(int i = 0; i < 10; i++)
   {
-    Meteor[i] = new Asteroid();
+    Meteor.add(new Asteroid());
   }
 }
 public void draw() 
@@ -21,13 +21,18 @@ public void draw()
   {
     Background[i].show();
   }
-  for(int i = 0; i < Meteor.length; i++)
+  for(int i = 0; i < Meteor.size(); i++)
   {
-    Meteor[i].show();
-    Meteor[i].move();
+    Meteor.get(i).show();
+    Meteor.get(i).move();
   }
   s.show();
   s.move();
+  for(int i = 0; i < Meteor.size(); i++)
+  {
+    if(dist(s.getX(),s.getY(),Meteor.get(i).getX(),Meteor.get(i).getY())<10)
+    Meteor.remove(i);
+  }
 }
 public void keyPressed()
 {

@@ -11,10 +11,6 @@ class Bullet extends Floater
   public void setPointDirection(int degrees) {myPointDirection = degrees;}
   public double getPointDirection() {return (int) myPointDirection;}
   
-  public void setup()
-  {
- 
-  }
   public Bullet(Spaceship theShip)
   {
     myCenterX = theShip.getX();

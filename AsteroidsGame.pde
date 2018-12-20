@@ -14,18 +14,6 @@ public void setup()
   {
     Meteor.add(new Asteroid());
   }
-  for(int i = 0; i < Meteor.size(); i++)
-  {
-    for(int ii = 0; ii < Pellet.size(); ii++)
-    {
-      if(dist(Meteor.get(i).getX(),Meteor.get(i).getY(),Pellet.get(ii).getX(),Pellet.get(ii).getY())<10)
-      {
-        Pellet.remove(ii);
-        Meteor.remove(i);
-        break;
-      }
-    }
-  }
 }
 public void draw() 
 {
@@ -45,6 +33,23 @@ public void draw()
   {
     if(dist(s.getX(),s.getY(),Meteor.get(i).getX(),Meteor.get(i).getY())<10)
     Meteor.remove(i);
+  }
+  for(int i = 0; i < Meteor.size(); i++)
+  {
+    for(int ii = 0; ii < Pellet.size(); ii++)
+    {
+      if(dist(Meteor.get(i).getX(),Meteor.get(i).getY(),Pellet.get(ii).getX(),Pellet.get(ii).getY())<10)
+      {
+        Pellet.remove(ii);
+        Meteor.remove(i);
+        break;
+      }
+    }
+  }
+  for(int i = 0; i < Pellet.size(); i++)
+  {
+    Pellet.get(i).show();
+    Pellet.get(i).move();
   }
 }
 public void keyPressed()

@@ -1,5 +1,6 @@
 Spaceship s = new Spaceship();
 ArrayList <Asteroid> Meteor = new ArrayList <Asteroid>();
+ArrayList <Bullet> Pellet = new ArrayList <Bullet>();
 //your variable declarations here
 public void setup() 
 {
@@ -12,6 +13,18 @@ public void setup()
   for(int i = 0; i < 10; i++)
   {
     Meteor.add(new Asteroid());
+  }
+  for(int i = 0; i < Meteor.size(); i++)
+  {
+    for(int ii = 0; ii < Pellet.size(); ii++)
+    {
+      if(dist(Meteor.get(i).getX(),Meteor.get(i).getY(),Pellet.get(ii).getX(),Pellet.get(ii).getY())<10)
+      {
+        Pellet.remove(ii);
+        Meteor.remove(i);
+        break;
+      }
+    }
   }
 }
 public void draw() 
@@ -59,4 +72,8 @@ public void keyPressed()
     s.setDirectionX(0);
     s.setDirectionY(0);
   } 
+  if(key == ' ') // bullet
+  {
+    Pellet.add(new Bullet(s));
+  }
 }
